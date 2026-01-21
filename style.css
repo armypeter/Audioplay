@@ -1,0 +1,78 @@
+/* style.css */
+:root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #FFD93D;
+    --bg-color: #F7FFF7;
+    --btn-shadow: #E05656;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: "Microsoft JhengHei", sans-serif;
+    display: flex;
+    justify-content: center;
+    /* 防止手機連點選取文字 */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+/* 響應式網格系統 */
+.grid-container {
+    display: grid;
+    gap: 20px;
+    /* 預設手機版：一列兩個 */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 電腦版：一列四個 (寬度大於 768px 時) */
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 俏皮風格按鈕 */
+.sound-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 20px;
+    padding: 30px 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #444;
+    cursor: pointer;
+    box-shadow: 0 8px 0 var(--btn-shadow);
+    transition: all 0.1s;
+    /* 關鍵：防止手機點擊縮放與延遲 */
+    touch-action: manipulation;
+    position: relative;
+    outline: none;
+}
+
+/* 按下去的效果 */
+.sound-btn:active {
+    box-shadow: 0 2px 0 var(--btn-shadow);
+    transform: translateY(6px);
+}
+
+/* 裝飾小圖示感 */
+.sound-btn::before {
+    content: '✨';
+    display: block;
+    margin-bottom: 5px;
+}
